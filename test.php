@@ -21,20 +21,14 @@ class Test
 
   public function fetch()
   {
-    // if (!is_null($this->location)) {
-    //   try {
-    //     echo "Weather in " .$this->location->getLocation()." right now is: ".$this->weather->getTemperature();
-    //   } catch(WeatherProviderException $e) {
-    //       $e->getMessage();
-    //   }
-    // }
-    echo "Weather in " .$this->location->getLocation()." right now is: ".$this->weather->getTemperature();
+    echo "Weather in " .$this->location->getLocation()." right now is: ".$this->weather->getTemperature() . " degrees celsius";
   }
 }
 
+$api_key = "88d214eed2db3bd9b88c7c49fac410ca";
 $Location = new Location("Vilnius");
 $Ywp = new Ywp();
-$Owmp = new Owmp();
+$Owmp = new Owmp($api_key);
 $Providers = [$Ywp, $Owmp];
 $Dwp = new Dwp($Providers);
 $Test = new Test($Location, $Dwp->fetch($Location));

@@ -17,7 +17,6 @@ class DelegatingWeatherProvider implements WeatherProviderInterface
       try {
           return $provider->fetch($location);
       } catch (WeatherProviderException $e) {
-          $e->getMessage();
       }
     }
 

@@ -4,16 +4,16 @@ namespace Nfq\Weather;
 
 class Location
 {
-  private $location;
+  private $city;
 
-  public function __construct($location)
+  public function __construct($city)
   {
-    $this->location = $location;
+    $this->city = $city;
   }
 
   public function getLocation()
   {
-    return $this->location;
+    return $this->city;
   }
 }
 
