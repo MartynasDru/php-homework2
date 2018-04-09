@@ -2,30 +2,29 @@
 
 namespace Nfq\Weather;
 
-class DelegatingWeatherProvider
+class DelegatingWeatherProvider implements WeatherProviderInterface
 {
   private $providers;
-  private $location;
   private $temperature;
 
-  public function __construct($providers, $location)
+  public function __construct(array $providers)
   {
     $this->providers = $providers;
-    $this->location = $location;
   }
 
-  public function fetch()
+  public function fetch(Location $location) : Weather
   {
     foreach($this->providers as $provider) {
       try {
-          $this->temperature = $provider->fetch($this->location)->getTemperature();
+          return $provider->fetch($location);
       } catch (WeatherProviderException $e) {
           $e->getMessage();
       }
     }
-    if (is_null($this->temperature)) {
-      throw new WeatherProviderException("Currently no working providers!");
-    }
+    // if (is_null($this->temperature)) {
+    //   throw new WeatherProviderException("Currently no working providers!");
+    // }
+
   }
 
 }
