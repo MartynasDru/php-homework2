@@ -21,6 +21,13 @@ class Test
 
   public function fetch()
   {
+    // if (!is_null($this->location)) {
+    //   try {
+    //     echo "Weather in " .$this->location->getLocation()." right now is: ".$this->weather->getTemperature();
+    //   } catch(WeatherProviderException $e) {
+    //       $e->getMessage();
+    //   }
+    // }
     echo "Weather in " .$this->location->getLocation()." right now is: ".$this->weather->getTemperature();
   }
 }

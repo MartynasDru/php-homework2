@@ -14,7 +14,7 @@ class YahooWeatherProvider implements WeatherProviderInterface
     $json = curl_exec($session);
     $phpObj =  json_decode($json);
 
-    if (is_null($phpObj->query->results)){
+    if ($phpObj->query->results === null){
        throw new WeatherProviderException("YahooWeatherProvider not working!");
     }
     $temperature = $phpObj->query->results->channel->item->condition->temp;

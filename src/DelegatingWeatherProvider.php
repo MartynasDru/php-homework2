@@ -5,7 +5,6 @@ namespace Nfq\Weather;
 class DelegatingWeatherProvider implements WeatherProviderInterface
 {
   private $providers;
-  private $temperature;
 
   public function __construct(array $providers)
   {
@@ -21,9 +20,8 @@ class DelegatingWeatherProvider implements WeatherProviderInterface
           $e->getMessage();
       }
     }
-    // if (is_null($this->temperature)) {
-    //   throw new WeatherProviderException("Currently no working providers!");
-    // }
+
+    throw new WeatherProviderException("Currently no working providers!");
 
   }
 
